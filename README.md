@@ -1,24 +1,44 @@
-# README
+#userテーブル
+|  Column          | Type       | Options                 |
+| ---------------- | ---------- | ------------------------|
+|email             |   string   | unique: true  null:false|
+|encrypted_password|   string   |    NOT NULL             |
+|nickname          |   string   |    NOT NULL             |
+|name              |   string   |    NOT NULL             |
+|height            |  integer   |    NOT NULL             |
+|sex_id               |  integer   |    NOT NULL             |
+|age               |  integer   |    NOT NULL             |
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+### Association
+- has_many :posts
+- has_many :comment
 
-* System dependencies
+##postテーブル
+|  Column          | Type       | Options                 |
+| ---------------- | ---------- |  -----------------------|
+|outer             |   string   |                         |
+|tops              |   string   |    NOT NULL             |
+|pants             |   string   |    NOT NULL             |
+|shoes             |   string   |    NOT NULL             |
+|hat               |   string   |                         |
+|accessory         |   string   |                         |
+|posted_date       |   date     |    NOT NULL             |
+|season_id         |   integer  |    NOT NULL             |
+|user              | references |   foreign_key: true     |
 
-* Configuration
+### Association
+- has_many   :comment
+- belongs_to :user
 
-* Database creation
+##commentテーブル
+|  Column     | Type       | Options                  |
+| ----------- | ---------- |  ------------------------|
+|user         | references |   foreign_key: true      |
+|post         | references |   foreign_key: true      |
+|text         |    text    |    NOT NULL              |
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Association
+- belongs_to :user
+- belongs_to :post
