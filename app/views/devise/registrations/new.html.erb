@@ -1,0 +1,106 @@
+<div class='account-page' id='account-page'>
+  <div class='account-page__inner clearfix'>
+    <div class='account-page__inner--left account-page__header'>
+      <h2>Create Account</h2>
+      <h5>新規アカウントの作成</h5>
+    </div>
+    <div class='account-page__inner--right user-form'>
+      <%= form_with model: resource, as: resource_name, url: user_registration_path(resource_name), local: true do |f|%>
+        <%= devise_error_messages!%>
+        <div class='field'>
+          <div class='field-label'>
+          <div class='form-text-wrap'>
+          <label class="form-text">名前</label>
+          <span class="indispensable">必須</span>
+        </div>
+            <%= f.label :name %>
+          </div>
+          <div class='field-input'>
+            <%= f.text_field :name, autofocus: true %>
+          </div>
+        </div>
+        <div class='field'>
+          <div class='field-label'>
+          <div class='form-text-wrap'>
+            <label class="form-text">ニックネーム</label>
+            <span class="indispensable">必須</span>
+          </div>
+            <%= f.label :nickname%>
+          </div>
+          <div class='field-input'>
+            <%= f.text_field :nickname, autofocus: true%>
+          </div>
+        </div>
+        <div class='field'>
+          <div class='field-label'>
+          <div class='form-text-wrap'>
+            <label class="form-text">Eメール</label>
+            <span class="indispensable">必須</span>
+            <%= f.label :email%>
+          </div>
+          <div class='field-input'>
+            <%= f.email_field :email%>
+          </div>
+        </div>
+        <div class='field'>
+          <div class='field-label'>
+          <div class='form-text-wrap'>
+            <label class="form-text">パスワード</label>
+            <span class="indispensable">必須</span>
+            <%= f.label :password%>
+            <i>(英数字6文字以上)</i>
+          </div>
+          <div class='field-input'>
+            <%= f.password_field :password, autocomplete: "off"%>
+          </div>
+        </div>
+        <div class='field'>
+          <div class='field-label'>
+          <div class='form-text-wrap'>
+            <label class="form-text">パスワード（確認）</label>
+            <span class="indispensable">必須</span>
+            <%= f.label :password_confirmation%>
+          </div>
+          <div class='field-input'>
+            <%= f.password_field :password_confirmation, autocomplete: "off"%>
+          </div>
+          <div class='field-label'>
+          <div class='form-text-wrap'>
+            <label class="form-text">身長</label>
+            <span class="indispensable">必須</span>
+            <%= f.label :height%>
+          </div>
+          <div class='field-input'>
+            <%= f.text_field :height, autocomplete: "off"%>
+          </div>
+        </div>
+        <div class='field'>
+          <div class='field-label'>
+          <div class='form-text-wrap'>
+            <label class="form-text">性別</label>
+            <span class="indispensable">必須</span>
+
+            <%= f.collection_select(:sex_id,Sex.all,:id,:name,{},{class:"select-box", id:"user-sex-fee-status"}) %>
+          </div>
+          <div class='field-input'>
+          
+          </div>
+        </div>
+        <div class='field'>
+          <div class='field-label'>
+          <div class='form-text-wrap'>
+            <label class="form-text">年齢</label>
+            <span class="indispensable">必須</span>
+            <%= f.label :age%>
+          </div>
+          <div class='field-input'>
+            <%= f.text_field :age, autofocus: true%>
+          </div>
+        </div>
+        <div class='actions'>
+          <%= f.submit "新規登録", class: 'btn'%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
