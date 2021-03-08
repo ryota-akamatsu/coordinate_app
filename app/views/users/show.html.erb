@@ -1,0 +1,46 @@
+<div class="main">
+  <div class="inner">
+    <div class="user__wrapper">
+      <h2 class="page-heading">
+        <%= "#{@user.nickname}さんの情報"%>
+      </h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="table__col1">ニックネーム</th>
+            <td class="table__col2"><%= "#{@user.nickname}" %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">性別</th>
+            <td class="table__col2"><%= "#{@user.sex.name}" %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">身長</th>
+            <td class="table__col2"><%= "#{@user.height}" %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">年齢</th>
+            <td class="table__col2"><%= "#{@user.age}" %></td>
+          </tr>
+        </tbody>
+      </table>
+      <h2 class="page-heading">
+        <%= "#{@user.nickname}さんのコーディネイト"%>
+      </h2>
+      <div class="user__card">
+        <div class="card">
+          <%= link_to image_tag(post.image, class: :card_img ), post_path(post.id)%>
+        
+          <div class="card__body">
+            <%= link_to user.height, prototype_path(prototype.id), class: :card_title%>
+            <p class="card__summary">
+              <%= prototype.catch_copy %>
+            </p>
+            <%= link_to  "#{post.user.name}" ,  user_path(post.user_id), class: :card_user %>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
