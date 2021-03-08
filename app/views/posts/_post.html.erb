@@ -1,16 +1,20 @@
 <ul class='post-lists'>
 
       
-      <%# <% @post.each do |post|%> 
-          <%# <li class='list'> %>
-            <%= link_to "#" do %>
+       <% @post.each do |post|%> 
+         <li class='list'> 
+            <%= link_to post_path(post.id) do %>
               <div class='post-img-content'>
-                <%# <%= image_tag post.image, class: "post-img" %> 
-                <%# <% end %> 
+                 <%= image_tag post.image, class: "post-img" %> 
+               <% end %> 
+               <h3>
+               <%= user.nickname%>
+               </h3>
                 <% end %>
+          </li>
                 
   
-   <%# <% if @post == [] %> 
+   <% if @post == [] %>
       <li class='list'>
         <%= link_to '#' do %>
          <%= image_tag "IMG_0332.jpeg", class: "post-img" %> 
@@ -19,6 +23,6 @@
             コーディネイトを投稿してね！！
           </h3>
         </div>
-        <%# <% end %> 
+        <% end %>
         </li>
         <% end %>
