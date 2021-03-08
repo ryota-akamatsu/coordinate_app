@@ -1,0 +1,81 @@
+<div class="post-sell-contents">
+
+  <div class="post-sell-main">
+    <h2 class="post-sell-title">コーデディネイトの情報を入力</h2>
+    <%= form_with model:@post,url:posts_path,local: true do |f| %>
+
+    <%= render 'shared/error_messages', model: f.object%>
+
+    <%# 投稿画像 %>
+    <div class="img-upload">
+
+      <div class="weight-bold-text">
+        コーディネイト画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :images,name: 'post[image][]', id:"post-image" %>
+         <div id="image-list"></div>
+
+      </div>
+      </div>
+
+    <%# /投稿画像 %>
+    <%# アイテム名 %>
+    <div class="new-items">
+      <div class="weight-bold-text">
+        アウター
+
+      </div>
+      <%= f.text_area :outer, class:"post-text", id:"post-name", placeholder:"アウター名", maxlength:"20" %>
+      <div class="new-items">
+      <div class="weight-bold-text">
+        トップス
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :tops, class:"post-text", id:"post-name", placeholder:"トップス名", maxlength:"20" %>
+      <div class="new-items">
+      <div class="weight-bold-text">
+        パンツ
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :pants, class:"post-text", id:"post-name", placeholder:"パンツ名", maxlength:"20" %>
+      <div class="new-items">
+      <div class="weight-bold-text">
+      靴
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :shoes, class:"post-text", id:"post-name", placeholder:"靴名", maxlength:"20" %>
+      <div class="new-items">
+      <div class="weight-bold-text">
+        帽子
+      </div>
+      <%= f.text_area :hat, class:"post-text", id:"post-name", placeholder:"帽子名", maxlength:"20" %>
+      <div class="new-items">
+      <div class="weight-bold-text">
+        アクセサリー
+      </div>
+      <%= f.text_area :accessory, class:"post-text", id:"post-name", placeholder:"アクセサリー名", maxlength:"20" %>  
+          <div class='new-items'>
+            <div class="weight-bold-text">
+            季節
+            <span class="indispensable">必須</span>
+            </div>
+            <%= f.collection_select(:season_id,Season.all,:id,:name,{},{class:"post-text", id:"post-season-fee-status"}) %>
+          </div>
+
+    <%# /配送について %>
+
+    <%# 下部ボタン %>
+    <div class="sell-btn-contents">
+      <%= f.submit "投稿する" ,class:"sell-btn",id: "subit" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+    <%# /下部ボタン %>
+
+  <% end %>
+ </div>
+</div>
