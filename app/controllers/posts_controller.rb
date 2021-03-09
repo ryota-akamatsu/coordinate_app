@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   def index
-    @post = Post.all
+    @post = Post.all.order("created_at DESC")
+    @user = User.new
+    
     end
    def new
      @post = Post.new
@@ -16,6 +18,6 @@ class PostsController < ApplicationController
    end
    private
    def posts_params
-     params.require(:post).permit(:outer,:tops,:pants,:shoes,:hat,:accessory,:season_id,images:[]).merge(user_id: current_user.id)
+     params.require(:post).permit(:outer,:tops,:pants,:shoes,:hat,:accessory,:season_id,:image).merge(user_id: current_user.id)
    end
 end
