@@ -1,0 +1,84 @@
+<main class="main">
+  <div class="inner">
+    <div class="post__wrapper">
+      
+      <%# プロトタイプの投稿者とログインしているユーザーが同じであれば以下を表示する %>
+        <% if user_signed_in? && current_user.id == @post.user_id %>
+        <div class="prototype__manage">
+          <%# <%= link_to "編集する",  edit_post_path(@post.id), class: :post__btn %> %>
+          <%# <%= link_to "削除する", post_path(@post.id),method: :delete, class: :post__btn %> %>
+         <% end %>
+        </div>
+      <%# // プロトタイプの投稿者とログインしているユーザーが同じであれば上記を表示する %>
+      <div class="post__image">
+        <%= image_tag @post.image %>
+      </div>
+      <div class="post__body">
+        <div class="post__detail">
+          <p class="detail__title">アイテム</p>
+           <table class="table">
+        <tbody>
+          <tr>
+            <th class="table__col1">アウター</th>
+            <td class="table__col2"><%= "#{@post.outer}" %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">トップス</th>
+            <td class="table__col2"><%= "#{@post.tops}" %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">ボトムス</th>
+            <td class="table__col2"><%= "#{@post.pants}" %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">くつ</th>
+            <td class="table__col2"><%= "#{@post.shoes}" %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">帽子</th>
+            <td class="table__col2"><%= "#{@post.hat}" %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">アクセサリー</th>
+            <td class="table__col2"><%= "#{@post.accessory}" %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">季節</th>
+            <td class="table__col2"><%= "#{@post.season.name}" %></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <% if user_signed_in?  %>
+      <div class="post__comments">
+        <%# ログインしているユーザーには以下のコメント投稿フォームを表示する %>
+         
+          <%# <%= form_with model: [@prototype,@comment], local: true do |f| %> %>
+            <%# <div class="field"> %>
+               <%# <%= f.label :text, "コメント" %><br /> %>
+              <%# <%= f.text_field :text %> %>
+            <%# </div> %>
+            <%# <div class="actions"> %>
+              <%# <%= f.submit "送信する", class: :form__btn %> %>
+            <%# </div> %>
+         <% end %> 
+       
+        <%# // ログインしているユーザーには上記を表示する %>
+        <ul class="comments_lists">
+          <%# 投稿に紐づくコメントを一覧する処理を記述する %>
+            <%# <% @comments.each do |comment| %> %>
+            <li class="comments_list">
+              <%# <%= " コメントのテキスト "%>
+        
+             
+             <%# <strong> <%= link_to comment.user.name,  "/users/#{@prototype.user.id}", class: :comment_user %></strong> %>
+          <%# <%= comment.text %> %>
+              
+            </li>
+          <%# // 投稿に紐づくコメントを一覧する処理を記述する %>
+           <%# <% end %> %>
+         <%# <% end %> %>
+        </ul>
+      </div>
+    </div>
+  </div>
