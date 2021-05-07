@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          has_many :Posts
          belongs_to :sex
+         has_many :Comment
          with_options presence: true do
           validates :nickname
           validates :name
